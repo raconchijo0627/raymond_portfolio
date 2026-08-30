@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Data Analyst · Portfolio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0a0a12;
+            color: #eee;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== HERO – no extra space below ===== */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 1rem 0 0;
+            background: radial-gradient(ellipse at center, #12121e 0%, #08080e 100%);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            text-align: center;
+            width: 100%;
+            padding: 0.25rem 0.75rem 1rem;
+            z-index: 10;
+            flex-shrink: 0;
+        }
+
+        /* ===== DATA HEADLINE ===== */
+        .data-headline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.04rem;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: clamp(1.4rem, 7vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(245, 87, 108, 0.15);
+            margin-bottom: 0.15rem;
+            padding: 0 0.2rem;
+        }
+
+        .data-headline .letter {
+            display: inline-block;
+            line-height: 1.2;
+            flex-shrink: 0;
+        }
+
+        .glyph-bar {
+            display: inline-flex;
+            align-items: flex-end;
+            height: clamp(1.4rem, 7vw, 3.6rem);
+            gap: clamp(2px, 0.4vw, 5px);
+            margin: 0 0.08rem;
+            padding-bottom: 0.15rem;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+        .glyph-bar .bar {
+            width: clamp(6px, 1.2vw, 14px);
+            border-radius: 3px 3px 2px 2px;
+            transition: height 0.2s;
+        }
+        .glyph-bar .bar.red { height: 45%; background: #ed1c24; }
+        .glyph-bar .bar.blue { height: 70%; background: #00aeef; }
+        .glyph-bar .bar.green { height: 100%; background: #39b54a; }
+
+        .glyph-pie {
+            display: inline-block;
+            width: clamp(1.2rem, 5vw, 2.8rem);
+            height: clamp(1.2rem, 5vw, 2.8rem);
+            border-radius: 50%;
+            background: conic-gradient(#4fc3f7 0% 40%, #81c784 40% 65%, #ffb74d 65% 85%, #f06292 85% 100%);
+            margin: 0 0.1rem;
+            vertical-align: middle;
+            box-shadow: 0 0 12px rgba(79, 195, 247, 0.3);
+            position: relative;
+            flex-shrink: 0;
+        }
+        .glyph-pie::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 30%;
+            width: 40%;
+            height: 40%;
+            background: #0a0a12;
+            border-radius: 50%;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .glyph-trend {
+            display: inline-block;
+            width: clamp(1.4rem, 5.5vw, 3rem);
+            height: clamp(1.2rem, 4.8vw, 2.6rem);
+            margin: 0 0.08rem;
+            vertical-align: middle;
+            position: relative;
+            border-left: 2px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            flex-shrink: 0;
+        }
+        .glyph-trend svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .glyph-trend .trend-line {
+            stroke: #4fc3f7;
+            stroke-width: 2.5;
+            fill: none;
+            filter: drop-shadow(0 0 6px rgba(79, 195, 247, 0.4));
+        }
+        .glyph-trend .trend-dot {
+            fill: #4fc3f7;
+            r: 2.5;
+        }
+
+        .hero-text {
+            position: relative;
+        }
+        .hero-text h1::before {
+            content: "⏣  ∑  ∆  π  ∫  ∂  √  ∞  µ  σ  β  χ  δ  ε  φ  η  ι  κ  λ  ν  ξ  ο  π  ρ  τ  υ  ω  θ  ψ  ζ  Γ  Δ  Θ  Λ  Ξ  Π  Σ  Φ  Ψ  Ω";
+            position: absolute;
+            bottom: -45%;
+            right: -15%;
+            font-size: 0.6rem;
+            font-weight: 300;
+            font-family: 'Courier New', monospace;
+            color: rgba(245, 87, 108, 0.07);
+            -webkit-text-fill-color: rgba(245, 87, 108, 0.07);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: -1;
+            letter-spacing: 0.8em;
+            animation: symbolFloat 22s linear infinite;
+            text-shadow: 0 0 18px rgba(245, 87, 108, 0.04);
+        }
+
+        @keyframes symbolFloat {
+            0% { transform: translateX(0%) scale(1) rotate(0deg); opacity: 0.4; }
+            50% { transform: translateX(-15%) scale(1.1) rotate(2deg); opacity: 0.7; }
+            100% { transform: translateX(0%) scale(1) rotate(0deg); opacity: 0.4; }
+        }
+
+        .hero-text p {
+            font-size: clamp(0.85rem, 2.4vw, 1.4rem);
+            color: #aab;
+            margin: 0.15rem 0 0.6rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            border-right: 2px solid rgba(79, 195, 247, 0.3);
+            padding-right: 0.6rem;
+            animation: blinkCursor 1.2s step-end infinite, textGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgba(79, 195, 247, 0.15);
+            font-family: 'Segoe UI', monospace;
+            white-space: nowrap;
+        }
+
+        @keyframes blinkCursor {
+            0%, 100% { border-color: rgba(79, 195, 247, 0.3); }
+            50% { border-color: transparent; }
+        }
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px rgba(79, 195, 247, 0.1); }
+            100% { text-shadow: 0 0 25px rgba(245, 87, 108, 0.25), 0 0 60px rgba(79, 195, 247, 0.1); }
+        }
+
+        .hero-text .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            letter-spacing: 0.04em;
+            font-family: 'Segoe UI', monospace;
+            touch-action: manipulation;
+        }
+        .hero-text .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(245, 87, 108, 0.4);
+        }
+        .hero-text .btn:active {
+            transform: scale(0.96);
+        }
+        .hero-text .btn::before {
+            content: "⌘ ";
+            font-weight: 300;
+            opacity: 0.7;
+        }
+
+        /* ===== MACBOOK CONTAINER ===== */
+        #macbook-container {
+            width: 100%;
+            height: clamp(280px, 50vh, 520px);
+            max-height: 70vh;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            flex-shrink: 0;
+            touch-action: pan-x pan-y;
+        }
+        #macbook-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+            cursor: grab;
+            touch-action: none;
+        }
+        #macbook-container canvas:active {
+            cursor: grabbing;
+        }
+
+        #loading-macbook {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: clamp(14px, 2vw, 20px);
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 14px 28px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            pointer-events: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+        #loading-macbook .spinner {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #f5576c;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== SECTION BLOCKS – compact, centered ===== */
+        .section-block {
+            padding: 4rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #0a0a12;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            text-align: center;
+            min-height: auto;
+        }
+        .section-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-block h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 0 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+            width: 100%;
+        }
+
+        /* ===== ABOUT ===== */
+        #about p {
+            max-width: 700px;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            color: #bbb;
+            line-height: 1.8;
+            padding: 0 0.5rem;
+            margin: 0 auto;
+        }
+
+        /* ===== SKILLS – centered ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 800px;
+            padding: 0 0.5rem;
+            justify-content: center;   /* 👈 centers columns when fewer than full */
+            margin: 0 auto;            /* ensures the grid itself is centered */
+        }
+        .skill-item {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 1.2rem 0.6rem;
+            border-radius: 1.2rem;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            touch-action: manipulation;
+        }
+        .skill-item:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .skill-item:active {
+            transform: scale(0.96);
+        }
+        .skill-item i {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 0.3rem;
+            color: #f5576c;
+            display: block;
+        }
+        .skill-item span {
+            font-size: clamp(0.75rem, 1.2vw, 1rem);
+            display: block;
+        }
+
+        /* ===== PROJECTS – centered ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 0.5rem;
+            justify-content: center;   /* 👈 centers cards when fewer than full */
+            margin: 0 auto;
+        }
+        .project-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 1.2rem;
+            padding: 1.6rem 1.4rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            touch-action: manipulation;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        .project-card:active {
+            transform: scale(0.98);
+        }
+        .project-card h3 {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 0.4rem;
+            color: #fff;
+        }
+        .project-card p {
+            color: #aaa;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+        }
+        .project-card .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .project-card .tech span {
+            background: rgba(245, 87, 108, 0.15);
+            padding: 0.15rem 0.7rem;
+            border-radius: 20px;
+            font-size: clamp(0.65rem, 1vw, 0.8rem);
+            color: #f5576c;
+            font-weight: 500;
+        }
+
+        /* ===== CONTACT ===== */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1.8rem 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 0 auto;
+        }
+        #contact input,
+        #contact textarea {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            color: #fff;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            outline: none;
+            font-family: inherit;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        #contact input:focus,
+        #contact textarea:focus {
+            border-color: #f5576c;
+        }
+        #contact textarea {
+            border-radius: 1.2rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+        #contact .btn {
+            width: fit-content;
+            align-self: center;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #fff;
+            padding: 0.65rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: 'Segoe UI', monospace;
+            touch-action: manipulation;
+        }
+        #contact .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(245, 87, 108, 0.4);
+        }
+        #contact .btn:active {
+            transform: scale(0.96);
+        }
+        #form-status {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #81c784;
+            min-height: 1.5rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #555;
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            background: #0a0a12;
+        }
+        footer i {
+            color: #f5576c;
+        }
+
+        /* ================================================================
+                   RESPONSIVE TWEAKS
+                   ================================================================ */
+        @media (max-width: 900px) {
+            #macbook-container {
+                height: clamp(240px, 42vh, 400px);
+            }
+            .section-block {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #hero {
+                padding: 0.5rem 0 0;
+            }
+            .hero-text {
+                padding: 0.15rem 0.5rem 0.6rem;
+            }
+            .data-headline {
+                gap: 0.02rem;
+                letter-spacing: 0.01em;
+                padding: 0 0.1rem;
+            }
+            .hero-text p {
+                font-size: 0.8rem;
+                white-space: nowrap;
+                padding-right: 0.4rem;
+                letter-spacing: 0.04em;
+            }
+            .hero-text .btn {
+                padding: 0.5rem 1.4rem;
+                font-size: 0.8rem;
+            }
+            #macbook-container {
+                height: clamp(200px, 38vh, 320px);
+                max-height: 50vh;
+            }
+            #loading-macbook {
+                padding: 10px 18px;
+                font-size: 13px;
+                white-space: normal;
+            }
+            #loading-macbook .spinner {
+                width: 18px;
+                height: 18px;
+                margin-right: 8px;
+            }
+            .section-block {
+                padding: 2.5rem 0.8rem;
+            }
+            .section-block h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+            .container {
+                padding: 0 0.8rem;
+            }
+            #about p {
+                font-size: 0.95rem;
+                padding: 0 0.2rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.7rem;
+                padding: 0 0.2rem;
+            }
+            .skill-item {
+                padding: 0.8rem 0.3rem;
+                border-radius: 1rem;
+            }
+            .skill-item i {
+                font-size: 1.6rem;
+            }
+            .skill-item span {
+                font-size: 0.7rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0 0.2rem;
+            }
+            .project-card {
+                padding: 1.2rem 1rem;
+                border-radius: 1rem;
+            }
+            .project-card h3 {
+                font-size: 1.1rem;
+            }
+            .project-card p {
+                font-size: 0.85rem;
+            }
+            #contact form {
+                padding: 1.2rem 1rem;
+                border-radius: 1.2rem;
+                gap: 0.8rem;
+            }
+            #contact input,
+            #contact textarea {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+                border-radius: 40px;
+            }
+            #contact textarea {
+                min-height: 80px;
+            }
+            #contact .btn {
+                padding: 0.5rem 1.8rem;
+                font-size: 0.85rem;
+            }
+            footer {
+                padding: 1rem 0;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .data-headline {
+                font-size: 1.2rem;
+                gap: 0.01rem;
+            }
+            .glyph-bar {
+                height: 1.2rem;
+                gap: 2px;
+            }
+            .glyph-bar .bar {
+                width: 5px;
+            }
+            .glyph-pie {
+                width: 1rem;
+                height: 1rem;
+            }
+            .glyph-trend {
+                width: 1.1rem;
+                height: 1rem;
+            }
+            .hero-text p {
+                font-size: 0.7rem;
+                padding-right: 0.3rem;
+            }
+            .hero-text .btn {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.7rem;
+            }
+            #macbook-container {
+                height: clamp(160px, 32vh, 260px);
+            }
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+            .skill-item {
+                padding: 0.6rem 0.2rem;
+            }
+            .skill-item i {
+                font-size: 1.3rem;
+            }
+            .skill-item span {
+                font-size: 0.6rem;
+            }
+            .section-block h2 {
+                font-size: 1.3rem;
+            }
+            .section-block {
+                padding: 2rem 0.5rem;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            #hero {
+                padding-top: 0.25rem;
+            }
+            .hero-text {
+                padding: 0.1rem 0.5rem 0.3rem;
+            }
+            .data-headline {
+                font-size: clamp(1rem, 4vh, 1.8rem);
+            }
+            .glyph-bar {
+                height: clamp(1rem, 4vh, 1.8rem);
+            }
+            .glyph-pie {
+                width: clamp(0.9rem, 3.5vh, 1.6rem);
+                height: clamp(0.9rem, 3.5vh, 1.6rem);
+            }
+            .glyph-trend {
+                width: clamp(1rem, 4vh, 1.8rem);
+                height: clamp(0.9rem, 3.5vh, 1.6rem);
+            }
+            .hero-text p {
+                font-size: clamp(0.6rem, 1.8vh, 0.9rem);
+                margin: 0.1rem 0 0.3rem;
+            }
+            .hero-text .btn {
+                padding: 0.3rem 1.2rem;
+                font-size: clamp(0.6rem, 1.8vh, 0.85rem);
+            }
+            #macbook-container {
+                height: clamp(160px, 45vh, 300px);
+                max-height: 60vh;
+            }
+            .section-block {
+                padding: 2rem 0.8rem;
+            }
+            .section-block h2 {
+                font-size: 1.4rem;
+                margin-bottom: 0.8rem;
+            }
+            .skills-grid {
+                gap: 0.6rem;
+            }
+            .skill-item {
+                padding: 0.6rem 0.3rem;
+            }
+            .skill-item i {
+                font-size: 1.4rem;
+            }
+            .projects-grid {
+                gap: 0.8rem;
+            }
+            .project-card {
+                padding: 0.8rem 0.8rem;
+            }
+            #contact form {
+                padding: 1rem 0.8rem;
+                gap: 0.6rem;
+            }
+            #contact input,
+            #contact textarea {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+            #contact textarea {
+                min-height: 60px;
+            }
+            #contact .btn {
+                padding: 0.3rem 1.2rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Print */
+        @media print {
+            #macbook-container {
+                height: 300px !important;
+            }
+            .section-block {
+                opacity: 1 !important;
+                transform: none !important;
+                padding: 2rem 0 !important;
+                break-inside: avoid;
+            }
+            body {
+                background: #fff;
+                color: #111;
+            }
+            .section-block h2 {
+                -webkit-text-fill-color: #f5576c;
+                color: #f5576c;
+            }
+            #about p {
+                color: #333;
+            }
+            .project-card {
+                background: #f5f5f5;
+                border-color: #ddd;
+            }
+            .project-card p {
+                color: #444;
+            }
+            .skill-item {
+                background: #f5f5f5;
+                border-color: #ddd;
+            }
+            .skill-item i {
+                color: #f5576c;
+            }
+            #contact form {
+                background: #f5f5f5;
+                border-color: #ddd;
+            }
+            #contact input,
+            #contact textarea {
+                background: #fff;
+                color: #111;
+                border-color: #ccc;
+            }
+            footer {
+                border-top-color: #ddd;
+                color: #888;
+            }
+            .hero-text .btn,
+            #contact .btn {
+                background: #f5576c !important;
+                color: #fff !important;
+            }
+            #loading-macbook {
+                display: none !important;
+            }
+            .hero-text h1::before {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="hero-text">
+            <div class="data-headline">
+                <span class="letter">H</span>
+                <span class="letter">e</span>
+                <span class="glyph-bar" aria-label="l">
+                    <span class="bar blue"></span>
+                    <span class="bar green"></span>
+                </span>
+                <span class="glyph-pie" aria-label="a"></span>
+                <span class="letter">,</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">I</span>
+                <span class="letter">'</span>
+                <span class="letter">m</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">R</span>
+                <span class="letter">a</span>
+                <span class="letter">y</span>
+                <span class="glyph-trend" aria-label="o">
+                    <svg viewBox="0 0 40 30" preserveAspectRatio="xMidYMid meet">
+                        <polyline points="2,25 10,18 18,22 26,12 34,16 38,8" class="trend-line" />
+                        <circle cx="2" cy="25" class="trend-dot" />
+                        <circle cx="10" cy="18" class="trend-dot" />
+                        <circle cx="18" cy="22" class="trend-dot" />
+                        <circle cx="26" cy="12" class="trend-dot" />
+                        <circle cx="34" cy="16" class="trend-dot" />
+                        <circle cx="38" cy="8" class="trend-dot" />
+                    </svg>
+                </span>
+                <span class="glyph-pie" aria-label="a"></span>
+                <span class="letter">n</span>
+                <span class="letter">d</span>
+            </div>
+            <p>Data Analyst · Turning data into stories</p>
+            <a href="#contact" class="btn">Let's talk</a>
+        </div>
+
+        <div id="macbook-container">
+            <div id="loading-macbook">
+                <span class="spinner"></span> Loading…
+            </div>
+            <canvas id="laptop-canvas"></canvas>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section-block">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                I'm a passionate Data Analyst with 5+ years of experience in extracting insights from complex datasets.
+                I love using Python, SQL, and visualization tools to help businesses make data-driven decisions.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section-block">
+        <div class="container">
+            <h2>Skills &amp; Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
+                <div class="skill-item"><i class="fas fa-database"></i><span>SQL</span></div>
+                <div class="skill-item"><i class="fas fa-chart-line"></i><span>Tableau</span></div>
+                <div class="skill-item"><i class="fas fa-chart-pie"></i><span>Power BI</span></div>
+                <div class="skill-item"><i class="fas fa-code"></i><span>Pandas</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section-block">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Sales Dashboard</h3>
+                    <p>Interactive Tableau dashboard analyzing regional sales performance.</p>
+                    <div class="tech"><span>Tableau</span><span>SQL</span><span>Streamlit</span></div>
+                </div>
+                <div class="project-card">
+                    <h3>Customer Churn Prediction</h3>
+                    <p>ML model using Python to predict customer churn with 85% accuracy.</p>
+                    <div class="tech"><span>Python</span><span>Scikit‑learn</span><span>Pandas</span></div>
+                </div>
+                <div class="project-card">
+                    <h3>Real‑time Stock Analyzer</h3>
+                    <p>Web app that visualizes stock data with live updates.</p>
+                    <div class="tech"><span>Python</span><span>Dash</span><span>Plotly</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section-block">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <form id="contact-form">
+                <input type="text" id="user_name" placeholder="Your Name" required />
+                <input type="email" id="user_email" placeholder="Your Email" required />
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+                <div class="status" id="form-status"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 Raymond Data &middot; Crafted with <i class="fas fa-heart"></i>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS (unchanged) ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
+    </script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.151.0/three.module.min.js",
+                "three/addons/": "https://unpkg.com/three@0.151.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js">
+    </script>
+    <script type="module">
+        // ================================================================
+        // MACBOOK 3D VIEWER – fully responsive (unchanged)
+        // ================================================================
+        import * as THREE from "three";
+        import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+        import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+        const container = document.getElementById('macbook-container');
+        const canvasEl = document.getElementById('laptop-canvas');
+        const loadingEl = document.getElementById('loading-macbook');
+
+        let scene, camera, renderer, orbit;
+        let darkPlasticMaterial, cameraMaterial, baseMetalMaterial, logoMaterial, screenMaterial, keyboardMaterial;
+        let macGroup, lidGroup, bottomGroup, screenMesh, lightHolder, screenLight;
+        let screenImageTexture;
+        let gsap;
+
+        // ================================================================
+        // DASHBOARD TEXTURE
+        // ================================================================
+        function createDashboardTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1920;
+            canvas.height = 1080;
+            const ctx = canvas.getContext('2d');
+
+            const bgGradient = ctx.createRadialGradient(
+                canvas.width / 2, canvas.height / 2, 0,
+                canvas.width / 2, canvas.height / 2, canvas.width
+            );
+            bgGradient.addColorStop(0, '#0f1b3d');
+            bgGradient.addColorStop(0.5, '#0a0e27');
+            bgGradient.addColorStop(1, '#050814');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < 50; i++) {
+                const x = (i / 50) * canvas.width;
+                ctx.strokeStyle = `rgba(100, 149, 237, ${0.03 + Math.random() * 0.03})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < 30; i++) {
+                const y = (i / 30) * canvas.height;
+                ctx.strokeStyle = `rgba(100, 149, 237, ${0.03 + Math.random() * 0.03})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+
+            ctx.shadowColor = 'rgba(100, 149, 237, 0.3)';
+            ctx.shadowBlur = 30;
+            ctx.fillStyle = '#4fc3f7';
+            ctx.font = '36px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('📊', 40, 75);
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 44px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Analytics Dashboard', 90, 75);
+
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillText('Real-time business intelligence · Q4 2024', 90, 105);
+
+            const kpis = [
+                { label: 'Total Revenue', value: '₱8,452,321', change: '+23.5%', icon: '💰', color: '#4fc3f7' },
+                { label: 'Active Users', value: '124,893', change: '+18.2%', icon: '👥', color: '#81c784' },
+                { label: 'Conversion Rate', value: '4.87%', change: '+2.4%', icon: '🎯', color: '#ffb74d' },
+                { label: 'Avg. Session', value: '6m 42s', change: '+5.1%', icon: '⏱️', color: '#f06292' }
+            ];
+
+            kpis.forEach((kpi, i) => {
+                const x = 40 + i * (canvas.width / 4 - 20);
+                const y = 150;
+                const w = canvas.width / 4 - 30;
+                const h = 120;
+
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                const grad = ctx.createLinearGradient(x, y, x, y + h);
+                grad.addColorStop(0, 'rgba(30, 50, 100, 0.3)');
+                grad.addColorStop(1, 'rgba(20, 30, 60, 0.5)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.roundRect(x, y, w, h, 12);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.font = '14px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(kpi.label, x + w - 20, y + 35);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 28px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = kpi.color + '20';
+                ctx.fillText(kpi.value, x + w - 20, y + 75);
+                ctx.shadowBlur = 0;
+
+                ctx.fillStyle = kpi.change.startsWith('+') ? '#81c784' : '#f06292';
+                ctx.font = '15px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(kpi.change, x + w - 20, y + 100);
+            });
+
+            // line chart
+            const chart1X = 40;
+            const chart1Y = 310;
+            const chart1W = canvas.width / 2 - 60;
+            const chart1H = 300;
+
+            ctx.shadowBlur = 30;
+            ctx.shadowColor = 'rgba(0,0,0,0.3)';
+            ctx.fillStyle = 'rgba(20, 35, 70, 0.4)';
+            ctx.beginPath();
+            ctx.roundRect(chart1X, chart1Y, chart1W, chart1H, 12);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('📈 Revenue Performance', chart1X + 25, chart1Y + 35);
+
+            const revenueData = [30, 45, 38, 55, 70, 62, 85, 78, 92, 88, 95, 82];
+
+            ctx.beginPath();
+            revenueData.forEach((value, i) => {
+                const x = chart1X + 20 + (i / (revenueData.length - 1)) * (chart1W - 40);
+                const y = chart1Y + 60 + chart1H - 80 - (value / 100) * (chart1H - 80);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            const lastX = chart1X + 20 + ((revenueData.length - 1) / (revenueData.length - 1)) * (chart1W - 40);
+            ctx.lineTo(lastX, chart1Y + 60 + chart1H - 80);
+            ctx.lineTo(chart1X + 20, chart1Y + 60 + chart1H - 80);
+            ctx.closePath();
+            const areaGrad = ctx.createLinearGradient(0, chart1Y + 60, 0, chart1Y + 60 + chart1H - 80);
+            areaGrad.addColorStop(0, 'rgba(79, 195, 247, 0.2)');
+            areaGrad.addColorStop(1, 'rgba(79, 195, 247, 0)');
+            ctx.fillStyle = areaGrad;
+            ctx.fill();
+
+            ctx.beginPath();
+            revenueData.forEach((value, i) => {
+                const x = chart1X + 20 + (i / (revenueData.length - 1)) * (chart1W - 40);
+                const y = chart1Y + 60 + chart1H - 80 - (value / 100) * (chart1H - 80);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = '#4fc3f7';
+            ctx.lineWidth = 3;
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = 'rgba(79, 195, 247, 0.4)';
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            revenueData.forEach((value, i) => {
+                const x = chart1X + 20 + (i / (revenueData.length - 1)) * (chart1W - 40);
+                const y = chart1Y + 60 + chart1H - 80 - (value / 100) * (chart1H - 80);
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = '#4fc3f7';
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = 'rgba(79, 195, 247, 0.5)';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            });
+
+            // bar chart
+            const chart2X = 40;
+            const chart2Y = 640;
+            const chart2W = canvas.width / 2 - 60;
+            const chart2H = 300;
+
+            ctx.shadowBlur = 30;
+            ctx.shadowColor = 'rgba(0,0,0,0.3)';
+            ctx.fillStyle = 'rgba(20, 35, 70, 0.4)';
+            ctx.beginPath();
+            ctx.roundRect(chart2X, chart2Y, chart2W, chart2H, 12);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('📊 Monthly Performance', chart2X + 25, chart2Y + 35);
+
+            const barData = [
+                { label: 'Jan', value: 65 },
+                { label: 'Feb', value: 78 },
+                { label: 'Mar', value: 82 },
+                { label: 'Apr', value: 70 },
+                { label: 'May', value: 91 },
+                { label: 'Jun', value: 88 },
+                { label: 'Jul', value: 95 },
+                { label: 'Aug', value: 84 },
+            ];
+
+            const barWidth = (chart2W - 60) / barData.length - 15;
+            const maxBarHeight = chart2H - 80;
+
+            barData.forEach((item, i) => {
+                const x = chart2X + 30 + i * (barWidth + 15);
+                const barHeight = (item.value / 100) * maxBarHeight;
+                const y = chart2Y + chart2H - 40 - barHeight;
+
+                ctx.fillStyle = '#4fc3f7';
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = '#4fc3f730';
+                ctx.beginPath();
+                ctx.roundRect(x, y, barWidth, barHeight, 4);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.font = '14px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(item.label, x + barWidth / 2, chart2Y + chart2H - 15);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.fillText(item.value + '%', x + barWidth / 2, y - 8);
+            });
+
+            // donut chart
+            const chart3X = canvas.width / 2 + 40;
+            const chart3Y = 310;
+            const chart3W = canvas.width / 2 - 80;
+            const chart3H = 630;
+
+            ctx.shadowBlur = 30;
+            ctx.shadowColor = 'rgba(0,0,0,0.3)';
+            ctx.fillStyle = 'rgba(20, 35, 70, 0.4)';
+            ctx.beginPath();
+            ctx.roundRect(chart3X, chart3Y, chart3W, chart3H, 12);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('🎯 Channel Distribution', chart3X + 25, chart3Y + 35);
+
+            const donutX = chart3X + chart3W / 2 - 30;
+            const donutY = chart3Y + 220;
+            const donutRadius = 140;
+            const segments = [
+                { value: 35, label: 'Organic Search', color: '#4fc3f7' },
+                { value: 25, label: 'Direct Traffic', color: '#81c784' },
+                { value: 20, label: 'Social Media', color: '#ffb74d' },
+                { value: 12, label: 'Email', color: '#f06292' },
+                { value: 8, label: 'Referral', color: '#ce93d8' }
+            ];
+
+            let startAngle = -Math.PI / 2;
+            segments.forEach(seg => {
+                const sliceAngle = (seg.value / 100) * Math.PI * 2;
+                ctx.beginPath();
+                ctx.moveTo(donutX, donutY);
+                ctx.arc(donutX, donutY, donutRadius, startAngle, startAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = seg.color;
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = seg.color + '40';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                startAngle += sliceAngle;
+            });
+
+            const holeGrad = ctx.createRadialGradient(donutX, donutY, 0, donutX, donutY, 70);
+            holeGrad.addColorStop(0, 'rgba(15, 27, 61, 0.9)');
+            holeGrad.addColorStop(1, 'rgba(10, 14, 39, 0.9)');
+            ctx.beginPath();
+            ctx.arc(donutX, donutY, 70, 0, Math.PI * 2);
+            ctx.fillStyle = holeGrad;
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 32px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('100%', donutX, donutY - 5);
+            ctx.fillStyle = 'rgba(255,255,255,0.5)';
+            ctx.font = '16px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillText('Total Traffic', donutX, donutY + 30);
+
+            const legendX = chart3X + 30;
+            let legendY = chart3Y + 380;
+            segments.forEach(seg => {
+                ctx.fillStyle = seg.color;
+                ctx.beginPath();
+                ctx.roundRect(legendX, legendY, 14, 14, 3);
+                ctx.fill();
+                ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                ctx.font = '15px -apple-system, BlinkMacSystemFont, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText(`${seg.label}`, legendX + 22, legendY + 12);
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.textAlign = 'right';
+                ctx.fillText(`${seg.value}%`, legendX + 200, legendY + 12);
+                legendY += 30;
+            });
+
+            return canvas;
+        }
+
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, radii) {
+                const r = typeof radii === 'number' ? radii : (radii || 0);
+                this.moveTo(x + r, y);
+                this.lineTo(x + w - r, y);
+                this.quadraticCurveTo(x + w, y, x + w, y + r);
+                this.lineTo(x + w, y + h - r);
+                this.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                this.lineTo(x + r, y + h);
+                this.quadraticCurveTo(x, y + h, x, y + h - r);
+                this.lineTo(x, y + r);
+                this.quadraticCurveTo(x, y, x + r, y);
+                return this;
+            };
+        }
+
+        function waitForGSAP() {
+            return new Promise((resolve) => {
+                if (window.gsap) {
+                    gsap = window.gsap;
+                    resolve();
+                } else {
+                    const checkGSAP = setInterval(() => {
+                        if (window.gsap) {
+                            gsap = window.gsap;
+                            clearInterval(checkGSAP);
+                            resolve();
+                        }
+                    }, 100);
+                }
+            });
+        }
+
+        // ================================================================
+        // THREE.JS SETUP
+        // ================================================================
+        async function init() {
+            await waitForGSAP();
+
+            const rect = container.getBoundingClientRect();
+            const width = rect.width || container.clientWidth || window.innerWidth;
+            const height = rect.height || container.clientHeight || 500;
+
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(40, width / height, 10, 1000);
+            camera.position.z = 75;
+
+            renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: true,
+                canvas: canvasEl
+            });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x000000, 0);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, .5);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight.position.set(10, 20, 30);
+            scene.add(dirLight);
+
+            lightHolder = new THREE.Group();
+            scene.add(lightHolder);
+            const light = new THREE.PointLight(0xFFF5E1, .8);
+            light.position.set(0, 5, 50);
+            lightHolder.add(light);
+
+            orbit = new OrbitControls(camera, renderer.domElement);
+            orbit.minDistance = 45;
+            orbit.maxDistance = 120;
+            orbit.enablePan = false;
+            orbit.enableDamping = true;
+            orbit.rotateSpeed = 0.8;
+            orbit.zoomSpeed = 0.8;
+
+            macGroup = new THREE.Group();
+            macGroup.position.z = -10;
+            scene.add(macGroup);
+            lidGroup = new THREE.Group();
+            macGroup.add(lidGroup);
+            bottomGroup = new THREE.Group();
+            macGroup.add(bottomGroup);
+
+            const dashboardCanvas = createDashboardTexture();
+            screenImageTexture = new THREE.CanvasTexture(dashboardCanvas);
+            screenImageTexture.flipY = false;
+
+            createMaterials();
+
+            const modelLoader = new GLTFLoader();
+            modelLoader.load(
+                "https://ksenia-k.com/models/mac-noUv.glb",
+                glb => {
+                    loadingEl.style.display = 'none';
+                    parseModel(glb);
+                    addScreen();
+                    addKeyboard();
+                    createTimelines();
+                    if (mainTl) mainTl.play(0);
+
+                    render();
+                    updateSceneSize();
+                    window.addEventListener("resize", () => updateSceneSize());
+                },
+                (xhr) => {
+                    const percent = Math.round((xhr.loaded / xhr.total) * 100);
+                    loadingEl.innerHTML = `<span class="spinner"></span> ${percent}%`;
+                },
+                error => {
+                    console.error("Error loading model:", error);
+                    loadingEl.textContent = '⚠️ Refresh';
+                }
+            );
+        }
+
+        init();
+
+        function updateSceneSize() {
+            const w = container.clientWidth;
+            const h = container.clientHeight;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        }
+
+        function createMaterials() {
+            const textLoader = new THREE.TextureLoader();
+
+            screenMaterial = new THREE.MeshBasicMaterial({
+                map: screenImageTexture,
+                transparent: true,
+                opacity: 0,
+                side: THREE.BackSide
+            });
+
+            const keyboardTexture = textLoader.load("https://ksenia-k.com/img/threejs/keyboard-overlay.png");
+            keyboardMaterial = new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                alphaMap: keyboardTexture,
+                transparent: true,
+            });
+
+            darkPlasticMaterial = new THREE.MeshStandardMaterial({
+                color: 0x1a1a1a,
+                roughness: .9,
+                metalness: .9,
+            });
+            cameraMaterial = new THREE.MeshBasicMaterial({
+                color: 0x333333
+            });
+            baseMetalMaterial = new THREE.MeshStandardMaterial({
+                color: 0xCECFD3,
+                roughness: 0.3,
+                metalness: 0.7
+            });
+            logoMaterial = new THREE.MeshBasicMaterial({
+                color: 0xffffff
+            });
+        }
+
+        function render() {
+            orbit.update();
+            if (lightHolder) {
+                lightHolder.quaternion.copy(camera.quaternion);
+            }
+            renderer.render(scene, camera);
+            requestAnimationFrame(render);
+        }
+
+        function parseModel(glb) {
+            [...glb.scene.children].forEach(child => {
+                if (child.name === "_top") {
+                    lidGroup.add(child);
+                    [...child.children].forEach(mesh => {
+                        if (mesh.name === "lid") {
+                            mesh.material = baseMetalMaterial;
+                        } else if (mesh.name === "logo") {
+                            mesh.material = logoMaterial;
+                        } else if (mesh.name === "screen-frame") {
+                            mesh.material = darkPlasticMaterial;
+                        } else if (mesh.name === "camera") {
+                            mesh.material = cameraMaterial;
+                        }
+                    });
+                } else if (child.name === "_bottom") {
+                    bottomGroup.add(child);
+                    [...child.children].forEach(mesh => {
+                        if (mesh.name === "base") {
+                            mesh.material = baseMetalMaterial;
+                        } else if (mesh.name === "legs") {
+                            mesh.material = darkPlasticMaterial;
+                        } else if (mesh.name === "keyboard") {
+                            mesh.material = darkPlasticMaterial;
+                        } else if (mesh.name === "inner") {
+                            mesh.material = darkPlasticMaterial;
+                        }
+                    });
+                }
+            });
+        }
+
+        function addScreen() {
+            screenMesh = new THREE.Mesh(
+                new THREE.PlaneGeometry(29.4, 20),
+                screenMaterial
+            );
+            screenMesh.position.set(0, 10.5, -.11);
+            screenMesh.rotation.set(Math.PI, 0, 0);
+            lidGroup.add(screenMesh);
+
+            screenLight = new THREE.RectAreaLight(0xffffff, 0, 29.4, 20);
+            screenLight.position.set(0, 10.5, 0);
+            screenLight.rotation.set(Math.PI, 0, 0);
+            lidGroup.add(screenLight);
+
+            const darkScreen = screenMesh.clone();
+            darkScreen.position.set(0, 10.5, -.111);
+            darkScreen.rotation.set(Math.PI, Math.PI, 0);
+            darkScreen.material = darkPlasticMaterial;
+            lidGroup.add(darkScreen);
+        }
+
+        function addKeyboard() {
+            const keyboardKeys = new THREE.Mesh(
+                new THREE.PlaneGeometry(27.7, 11.6),
+                keyboardMaterial
+            );
+            keyboardKeys.rotation.set(-.5 * Math.PI, 0, 0);
+            keyboardKeys.position.set(0, .045, 7.21);
+            bottomGroup.add(keyboardKeys);
+        }
+
+        let mainTl, laptopAppearTl, laptopOpeningTl, screenOnTl, textureScrollTl, floatingTl;
+
+        function createTimelines() {
+            floatingTl = gsap.timeline({
+                    repeat: -1,
+                })
+                .to([lidGroup.position, bottomGroup.position], {
+                    duration: 1.5,
+                    y: "+=1",
+                    ease: "power1.inOut"
+                }, 0)
+                .to([lidGroup.position, bottomGroup.position], {
+                    duration: 1.5,
+                    y: "-=1",
+                    ease: "power1.inOut"
+                })
+                .timeScale(0);
+
+            screenOnTl = gsap.timeline({
+                    paused: true,
+                })
+                .to(screenMaterial, {
+                    duration: .1,
+                    opacity: .96
+                }, 0)
+                .to(screenLight, {
+                    duration: .1,
+                    intensity: 1.5
+                }, 0);
+
+            laptopOpeningTl = gsap.timeline({
+                    paused: true,
+                })
+                .from(lidGroup.position, {
+                    duration: .75,
+                    z: "+=.5"
+                }, 0)
+                .fromTo(lidGroup.rotation, {
+                    duration: 1,
+                    x: .5 * Math.PI
+                }, {
+                    x: -.2 * Math.PI
+                }, 0)
+                .to(screenOnTl, {
+                    duration: .06,
+                    progress: 1
+                }, .05);
+
+            textureScrollTl = gsap.timeline({
+                    paused: true,
+                })
+                .to(screenImageTexture.offset, {
+                    duration: 2,
+                    y: .4,
+                    ease: "power1.inOut",
+                });
+
+            laptopAppearTl = gsap.timeline({
+                    paused: true
+                })
+                .fromTo(macGroup.rotation, {
+                    x: .5 * Math.PI,
+                    y: .2 * Math.PI
+                }, {
+                    duration: 2,
+                    x: .05 * Math.PI,
+                    y: -.1 * Math.PI
+                }, 0)
+                .fromTo(macGroup.position, {
+                    y: -50
+                }, {
+                    duration: 1,
+                    y: -8
+                }, 0);
+
+            mainTl = gsap.timeline({
+                    defaults: {
+                        ease: "none"
+                    }
+                })
+                .to(laptopAppearTl, {
+                    duration: 1.5,
+                    progress: 1
+                }, 0)
+                .to(laptopOpeningTl, {
+                    duration: 1,
+                    progress: .34
+                }, .5)
+                .to(textureScrollTl, {
+                    duration: 1.5,
+                    progress: 1
+                }, 1.5)
+                .to(textureScrollTl, {
+                    duration: 1,
+                    progress: 0
+                })
+                .to(floatingTl, {
+                    duration: 1,
+                    timeScale: 1
+                }, 1);
+        }
+
+        document.querySelectorAll('.section-block').forEach(el => {
+            new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) el.classList.add('visible');
+            }, { threshold: 0.12 }).observe(el);
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            status.textContent = '✓ Message sent! (demo)';
+            status.style.color = '#81c784';
+            this.reset();
+            setTimeout(() => { status.textContent = ''; }, 3000);
+        });
+    </script>
+
+</body>
+</html>
