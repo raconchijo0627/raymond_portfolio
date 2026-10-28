@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Data Analyst · Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Raymond Conchijo — Data Analyst. Dashboards, reporting automation and internal data tools." />
+    <title>Raymond Conchijo · Data Analyst Portfolio</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 56px;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -28,7 +26,30 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ===== HERO – no extra space below ===== */
+        /* ===== NAV (new) ===== */
+        .topnav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: clamp(0.8rem, 3vw, 2rem);
+            padding: 0.8rem 1rem;
+            background: rgba(10, 10, 18, 0.82);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .topnav a {
+            color: #aab;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
+        .topnav a:hover { color: #f5576c; }
+
+        /* ===== HERO ===== */
         #hero {
             display: flex;
             flex-direction: column;
@@ -48,6 +69,7 @@
             padding: 0.25rem 0.75rem 1rem;
             z-index: 10;
             flex-shrink: 0;
+            position: relative;
         }
 
         /* ===== DATA HEADLINE ===== */
@@ -66,12 +88,7 @@
             margin-bottom: 0.15rem;
             padding: 0 0.2rem;
         }
-
-        .data-headline .letter {
-            display: inline-block;
-            line-height: 1.2;
-            flex-shrink: 0;
-        }
+        .data-headline .letter { display: inline-block; line-height: 1.2; flex-shrink: 0; }
 
         .glyph-bar {
             display: inline-flex;
@@ -83,11 +100,7 @@
             vertical-align: middle;
             flex-shrink: 0;
         }
-        .glyph-bar .bar {
-            width: clamp(6px, 1.2vw, 14px);
-            border-radius: 3px 3px 2px 2px;
-            transition: height 0.2s;
-        }
+        .glyph-bar .bar { width: clamp(6px, 1.2vw, 14px); border-radius: 3px 3px 2px 2px; transition: height 0.2s; }
         .glyph-bar .bar.red { height: 45%; background: #ed1c24; }
         .glyph-bar .bar.blue { height: 70%; background: #00aeef; }
         .glyph-bar .bar.green { height: 100%; background: #39b54a; }
@@ -107,10 +120,8 @@
         .glyph-pie::after {
             content: '';
             position: absolute;
-            top: 30%;
-            left: 30%;
-            width: 40%;
-            height: 40%;
+            top: 30%; left: 30%;
+            width: 40%; height: 40%;
             background: #0a0a12;
             border-radius: 50%;
             box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
@@ -127,48 +138,12 @@
             border-bottom: 2px solid rgba(255, 255, 255, 0.15);
             flex-shrink: 0;
         }
-        .glyph-trend svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
+        .glyph-trend svg { width: 100%; height: 100%; display: block; }
         .glyph-trend .trend-line {
-            stroke: #4fc3f7;
-            stroke-width: 2.5;
-            fill: none;
+            stroke: #4fc3f7; stroke-width: 2.5; fill: none;
             filter: drop-shadow(0 0 6px rgba(79, 195, 247, 0.4));
         }
-        .glyph-trend .trend-dot {
-            fill: #4fc3f7;
-            r: 2.5;
-        }
-
-        .hero-text {
-            position: relative;
-        }
-        .hero-text h1::before {
-            content: "⏣  ∑  ∆  π  ∫  ∂  √  ∞  µ  σ  β  χ  δ  ε  φ  η  ι  κ  λ  ν  ξ  ο  π  ρ  τ  υ  ω  θ  ψ  ζ  Γ  Δ  Θ  Λ  Ξ  Π  Σ  Φ  Ψ  Ω";
-            position: absolute;
-            bottom: -45%;
-            right: -15%;
-            font-size: 0.6rem;
-            font-weight: 300;
-            font-family: 'Courier New', monospace;
-            color: rgba(245, 87, 108, 0.07);
-            -webkit-text-fill-color: rgba(245, 87, 108, 0.07);
-            pointer-events: none;
-            white-space: nowrap;
-            z-index: -1;
-            letter-spacing: 0.8em;
-            animation: symbolFloat 22s linear infinite;
-            text-shadow: 0 0 18px rgba(245, 87, 108, 0.04);
-        }
-
-        @keyframes symbolFloat {
-            0% { transform: translateX(0%) scale(1) rotate(0deg); opacity: 0.4; }
-            50% { transform: translateX(-15%) scale(1.1) rotate(2deg); opacity: 0.7; }
-            100% { transform: translateX(0%) scale(1) rotate(0deg); opacity: 0.4; }
-        }
+        .glyph-trend .trend-dot { fill: #4fc3f7; r: 2.5; }
 
         .hero-text p {
             font-size: clamp(0.85rem, 2.4vw, 1.4rem);
@@ -185,17 +160,15 @@
             font-family: 'Segoe UI', monospace;
             white-space: nowrap;
         }
-
-        @keyframes blinkCursor {
-            0%, 100% { border-color: rgba(79, 195, 247, 0.3); }
-            50% { border-color: transparent; }
-        }
+        @keyframes blinkCursor { 0%, 100% { border-color: rgba(79, 195, 247, 0.3); } 50% { border-color: transparent; } }
         @keyframes textGlow {
             0% { text-shadow: 0 0 5px rgba(79, 195, 247, 0.1); }
             100% { text-shadow: 0 0 25px rgba(245, 87, 108, 0.25), 0 0 60px rgba(79, 195, 247, 0.1); }
         }
 
-        .hero-text .btn {
+        .hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
             display: inline-block;
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: #fff;
@@ -211,17 +184,12 @@
             font-family: 'Segoe UI', monospace;
             touch-action: manipulation;
         }
-        .hero-text .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(245, 87, 108, 0.4);
-        }
-        .hero-text .btn:active {
-            transform: scale(0.96);
-        }
-        .hero-text .btn::before {
-            content: "⌘ ";
-            font-weight: 300;
-            opacity: 0.7;
+        .btn:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(245, 87, 108, 0.4); }
+        .btn:active { transform: scale(0.96); }
+        .btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(245, 87, 108, 0.6);
+            color: #f5576c;
         }
 
         /* ===== MACBOOK CONTAINER ===== */
@@ -235,21 +203,12 @@
             flex-shrink: 0;
             touch-action: pan-x pan-y;
         }
-        #macbook-container canvas {
-            width: 100% !important;
-            height: 100% !important;
-            display: block;
-            cursor: grab;
-            touch-action: none;
-        }
-        #macbook-container canvas:active {
-            cursor: grabbing;
-        }
+        #macbook-container canvas { width: 100% !important; height: 100% !important; display: block; cursor: grab; touch-action: none; }
+        #macbook-container canvas:active { cursor: grabbing; }
 
         #loading-macbook {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -266,8 +225,7 @@
         }
         #loading-macbook .spinner {
             display: inline-block;
-            width: 22px;
-            height: 22px;
+            width: 22px; height: 22px;
             border: 3px solid rgba(255, 255, 255, 0.1);
             border-top-color: #f5576c;
             border-radius: 50%;
@@ -275,11 +233,9 @@
             vertical-align: middle;
             margin-right: 10px;
         }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ===== SECTION BLOCKS – compact, centered ===== */
+        /* ===== SECTION BLOCKS ===== */
         .section-block {
             padding: 4rem 1.2rem;
             display: flex;
@@ -293,40 +249,38 @@
             text-align: center;
             min-height: auto;
         }
-        .section-block.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .section-block.visible { opacity: 1; transform: translateY(0); }
 
         .section-block h2 {
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.6rem;
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding: 0 1rem;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.2rem;
-            width: 100%;
+        .section-sub {
+            color: #99a;
+            max-width: 640px;
+            margin: 0 auto 2rem;
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
         }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; width: 100%; }
 
         /* ===== ABOUT ===== */
         #about p {
-            max-width: 700px;
+            max-width: 720px;
             font-size: clamp(1rem, 1.8vw, 1.25rem);
             color: #bbb;
             line-height: 1.8;
             padding: 0 0.5rem;
-            margin: 0 auto;
+            margin: 1rem auto 0;
         }
 
-        /* ===== SKILLS – centered ===== */
+        /* ===== SKILLS ===== */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -334,8 +288,8 @@
             width: 100%;
             max-width: 800px;
             padding: 0 0.5rem;
-            justify-content: center;   /* 👈 centers columns when fewer than full */
-            margin: 0 auto;            /* ensures the grid itself is centered */
+            justify-content: center;
+            margin: 1.5rem auto 0;
         }
         .skill-item {
             background: rgba(255, 255, 255, 0.04);
@@ -348,33 +302,41 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             touch-action: manipulation;
         }
-        .skill-item:hover {
-            transform: translateY(-6px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .skill-item:active {
-            transform: scale(0.96);
-        }
-        .skill-item i {
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            margin-bottom: 0.3rem;
-            color: #f5576c;
-            display: block;
-        }
-        .skill-item span {
-            font-size: clamp(0.75rem, 1.2vw, 1rem);
-            display: block;
-        }
+        .skill-item:hover { transform: translateY(-6px); background: rgba(255, 255, 255, 0.08); }
+        .skill-item:active { transform: scale(0.96); }
+        .skill-item i { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 0.3rem; color: #f5576c; display: block; }
+        .skill-item span { font-size: clamp(0.75rem, 1.2vw, 1rem); display: block; }
 
-        /* ===== PROJECTS – centered ===== */
+        /* ===== PROJECTS ===== */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #bbb;
+            padding: 0.4rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover { color: #fff; border-color: rgba(245, 87, 108, 0.5); }
+        .filter-btn.active { background: rgba(245, 87, 108, 0.18); color: #f5576c; border-color: #f5576c; }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.6rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1150px;
             padding: 0 0.5rem;
-            justify-content: center;   /* 👈 centers cards when fewer than full */
+            justify-content: center;
             margin: 0 auto;
         }
         .project-card {
@@ -382,40 +344,113 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border-radius: 1.2rem;
-            padding: 1.6rem 1.4rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
             touch-action: manipulation;
-        }
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-        .project-card:active {
-            transform: scale(0.98);
-        }
-        .project-card h3 {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            margin-bottom: 0.4rem;
-            color: #fff;
-        }
-        .project-card p {
-            color: #aaa;
-            margin-bottom: 0.8rem;
-            font-size: clamp(0.85rem, 1.2vw, 1rem);
-        }
-        .project-card .tech {
+            overflow: hidden;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
+            flex-direction: column;
+            text-align: left;
         }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+        .project-card.hidden { display: none; }
+
+        .project-thumb {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            overflow: hidden;
+            cursor: zoom-in;
+            border: none;
+            padding: 0;
+            width: 100%;
+            display: block;
+        }
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top left;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .project-card:hover .project-thumb img { transform: scale(1.04); }
+        .project-thumb .fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(245, 87, 108, 0.6);
+        }
+        .project-thumb.no-img .fallback { display: flex; }
+        .project-thumb .zoom-hint {
+            position: absolute;
+            right: 0.6rem; bottom: 0.6rem;
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .project-card:hover .zoom-hint { opacity: 1; }
+
+        .project-body { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+        .project-card .kicker {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #4fc3f7;
+            margin-bottom: 0.3rem;
+        }
+        .project-card h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); margin-bottom: 0.5rem; color: #fff; }
+        .project-card p { color: #aaa; margin-bottom: 0.7rem; font-size: clamp(0.85rem, 1.2vw, 0.95rem); }
+        .project-card ul { list-style: none; margin-bottom: 1rem; }
+        .project-card li {
+            color: #bbb;
+            font-size: 0.85rem;
+            padding-left: 1.1rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+        }
+        .project-card li::before { content: "▹"; position: absolute; left: 0; color: #f5576c; }
+        .project-card .tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
         .project-card .tech span {
             background: rgba(245, 87, 108, 0.15);
             padding: 0.15rem 0.7rem;
             border-radius: 20px;
-            font-size: clamp(0.65rem, 1vw, 0.8rem);
+            font-size: clamp(0.65rem, 1vw, 0.78rem);
             color: #f5576c;
             font-weight: 500;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.88);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            cursor: zoom-out;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 20px 80px rgba(0,0,0,0.6); }
+        .lightbox .close {
+            position: absolute; top: 1rem; right: 1.2rem;
+            color: #fff; font-size: 1.8rem; background: none; border: none; cursor: pointer;
+        }
+
+        .privacy-note {
+            max-width: 640px;
+            margin: 2rem auto 0;
+            font-size: 0.78rem;
+            color: #667;
         }
 
         /* ===== CONTACT ===== */
@@ -429,10 +464,9 @@
             padding: 1.8rem 1.5rem;
             border-radius: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            margin: 0 auto;
+            margin: 1.5rem auto 0;
         }
-        #contact input,
-        #contact textarea {
+        #contact input, #contact textarea {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 0.7rem 1.2rem;
@@ -445,43 +479,10 @@
             -webkit-appearance: none;
             appearance: none;
         }
-        #contact input:focus,
-        #contact textarea:focus {
-            border-color: #f5576c;
-        }
-        #contact textarea {
-            border-radius: 1.2rem;
-            resize: vertical;
-            min-height: 100px;
-        }
-        #contact .btn {
-            width: fit-content;
-            align-self: center;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: #fff;
-            padding: 0.65rem 2.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: clamp(0.9rem, 1.2vw, 1rem);
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-family: 'Segoe UI', monospace;
-            touch-action: manipulation;
-        }
-        #contact .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(245, 87, 108, 0.4);
-        }
-        #contact .btn:active {
-            transform: scale(0.96);
-        }
-        #form-status {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #81c784;
-            min-height: 1.5rem;
-        }
+        #contact input:focus, #contact textarea:focus { border-color: #f5576c; }
+        #contact textarea { border-radius: 1.2rem; resize: vertical; min-height: 100px; }
+        #contact .btn { width: fit-content; align-self: center; }
+        #form-status { text-align: center; font-size: 0.9rem; color: #81c784; min-height: 1.5rem; }
 
         /* ===== FOOTER ===== */
         footer {
@@ -492,328 +493,109 @@
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             background: #0a0a12;
         }
-        footer i {
-            color: #f5576c;
-        }
+        footer i { color: #f5576c; }
 
-        /* ================================================================
-                   RESPONSIVE TWEAKS
-                   ================================================================ */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
-            #macbook-container {
-                height: clamp(240px, 42vh, 400px);
-            }
-            .section-block {
-                padding: 3rem 1rem;
-            }
+            #macbook-container { height: clamp(240px, 42vh, 400px); }
+            .section-block { padding: 3rem 1rem; }
         }
 
         @media (max-width: 600px) {
-            #hero {
-                padding: 0.5rem 0 0;
-            }
-            .hero-text {
-                padding: 0.15rem 0.5rem 0.6rem;
-            }
-            .data-headline {
-                gap: 0.02rem;
-                letter-spacing: 0.01em;
-                padding: 0 0.1rem;
-            }
-            .hero-text p {
-                font-size: 0.8rem;
-                white-space: nowrap;
-                padding-right: 0.4rem;
-                letter-spacing: 0.04em;
-            }
-            .hero-text .btn {
-                padding: 0.5rem 1.4rem;
-                font-size: 0.8rem;
-            }
-            #macbook-container {
-                height: clamp(200px, 38vh, 320px);
-                max-height: 50vh;
-            }
-            #loading-macbook {
-                padding: 10px 18px;
-                font-size: 13px;
-                white-space: normal;
-            }
-            #loading-macbook .spinner {
-                width: 18px;
-                height: 18px;
-                margin-right: 8px;
-            }
-            .section-block {
-                padding: 2.5rem 0.8rem;
-            }
-            .section-block h2 {
-                font-size: 1.6rem;
-                margin-bottom: 1rem;
-            }
-            .container {
-                padding: 0 0.8rem;
-            }
-            #about p {
-                font-size: 0.95rem;
-                padding: 0 0.2rem;
-            }
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.7rem;
-                padding: 0 0.2rem;
-            }
-            .skill-item {
-                padding: 0.8rem 0.3rem;
-                border-radius: 1rem;
-            }
-            .skill-item i {
-                font-size: 1.6rem;
-            }
-            .skill-item span {
-                font-size: 0.7rem;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 0 0.2rem;
-            }
-            .project-card {
-                padding: 1.2rem 1rem;
-                border-radius: 1rem;
-            }
-            .project-card h3 {
-                font-size: 1.1rem;
-            }
-            .project-card p {
-                font-size: 0.85rem;
-            }
-            #contact form {
-                padding: 1.2rem 1rem;
-                border-radius: 1.2rem;
-                gap: 0.8rem;
-            }
-            #contact input,
-            #contact textarea {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-                border-radius: 40px;
-            }
-            #contact textarea {
-                min-height: 80px;
-            }
-            #contact .btn {
-                padding: 0.5rem 1.8rem;
-                font-size: 0.85rem;
-            }
-            footer {
-                padding: 1rem 0;
-                font-size: 0.7rem;
-            }
+            #hero { padding: 0.5rem 0 0; }
+            .hero-text { padding: 0.15rem 0.5rem 0.6rem; }
+            .data-headline { gap: 0.02rem; letter-spacing: 0.01em; padding: 0 0.1rem; }
+            .hero-text p { font-size: 0.8rem; white-space: nowrap; padding-right: 0.4rem; letter-spacing: 0.04em; }
+            .btn { padding: 0.5rem 1.4rem; font-size: 0.8rem; }
+            #macbook-container { height: clamp(200px, 38vh, 320px); max-height: 50vh; }
+            #loading-macbook { padding: 10px 18px; font-size: 13px; white-space: normal; }
+            #loading-macbook .spinner { width: 18px; height: 18px; margin-right: 8px; }
+            .section-block { padding: 2.5rem 0.8rem; }
+            .section-block h2 { font-size: 1.6rem; }
+            .container { padding: 0 0.8rem; }
+            #about p { font-size: 0.95rem; padding: 0 0.2rem; }
+            .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; padding: 0 0.2rem; }
+            .skill-item { padding: 0.8rem 0.3rem; border-radius: 1rem; }
+            .skill-item i { font-size: 1.6rem; }
+            .skill-item span { font-size: 0.7rem; }
+            .projects-grid { grid-template-columns: 1fr; gap: 1rem; padding: 0 0.2rem; }
+            .project-card { border-radius: 1rem; }
+            .project-body { padding: 1rem 1rem 1.2rem; }
+            #contact form { padding: 1.2rem 1rem; border-radius: 1.2rem; gap: 0.8rem; }
+            #contact input, #contact textarea { padding: 0.6rem 1rem; font-size: 0.85rem; border-radius: 40px; }
+            #contact textarea { min-height: 80px; }
+            footer { padding: 1rem 0; font-size: 0.7rem; }
         }
 
         @media (max-width: 400px) {
-            .data-headline {
-                font-size: 1.2rem;
-                gap: 0.01rem;
-            }
-            .glyph-bar {
-                height: 1.2rem;
-                gap: 2px;
-            }
-            .glyph-bar .bar {
-                width: 5px;
-            }
-            .glyph-pie {
-                width: 1rem;
-                height: 1rem;
-            }
-            .glyph-trend {
-                width: 1.1rem;
-                height: 1rem;
-            }
-            .hero-text p {
-                font-size: 0.7rem;
-                padding-right: 0.3rem;
-            }
-            .hero-text .btn {
-                padding: 0.4rem 1.2rem;
-                font-size: 0.7rem;
-            }
-            #macbook-container {
-                height: clamp(160px, 32vh, 260px);
-            }
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.5rem;
-            }
-            .skill-item {
-                padding: 0.6rem 0.2rem;
-            }
-            .skill-item i {
-                font-size: 1.3rem;
-            }
-            .skill-item span {
-                font-size: 0.6rem;
-            }
-            .section-block h2 {
-                font-size: 1.3rem;
-            }
-            .section-block {
-                padding: 2rem 0.5rem;
-            }
+            .data-headline { font-size: 1.2rem; gap: 0.01rem; }
+            .glyph-bar { height: 1.2rem; gap: 2px; }
+            .glyph-bar .bar { width: 5px; }
+            .glyph-pie { width: 1rem; height: 1rem; }
+            .glyph-trend { width: 1.1rem; height: 1rem; }
+            .hero-text p { font-size: 0.7rem; padding-right: 0.3rem; }
+            #macbook-container { height: clamp(160px, 32vh, 260px); }
+            .skill-item i { font-size: 1.3rem; }
+            .skill-item span { font-size: 0.6rem; }
+            .section-block h2 { font-size: 1.3rem; }
+            .section-block { padding: 2rem 0.5rem; }
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
-            #hero {
-                padding-top: 0.25rem;
-            }
-            .hero-text {
-                padding: 0.1rem 0.5rem 0.3rem;
-            }
-            .data-headline {
-                font-size: clamp(1rem, 4vh, 1.8rem);
-            }
-            .glyph-bar {
-                height: clamp(1rem, 4vh, 1.8rem);
-            }
-            .glyph-pie {
-                width: clamp(0.9rem, 3.5vh, 1.6rem);
-                height: clamp(0.9rem, 3.5vh, 1.6rem);
-            }
-            .glyph-trend {
-                width: clamp(1rem, 4vh, 1.8rem);
-                height: clamp(0.9rem, 3.5vh, 1.6rem);
-            }
-            .hero-text p {
-                font-size: clamp(0.6rem, 1.8vh, 0.9rem);
-                margin: 0.1rem 0 0.3rem;
-            }
-            .hero-text .btn {
-                padding: 0.3rem 1.2rem;
-                font-size: clamp(0.6rem, 1.8vh, 0.85rem);
-            }
-            #macbook-container {
-                height: clamp(160px, 45vh, 300px);
-                max-height: 60vh;
-            }
-            .section-block {
-                padding: 2rem 0.8rem;
-            }
-            .section-block h2 {
-                font-size: 1.4rem;
-                margin-bottom: 0.8rem;
-            }
-            .skills-grid {
-                gap: 0.6rem;
-            }
-            .skill-item {
-                padding: 0.6rem 0.3rem;
-            }
-            .skill-item i {
-                font-size: 1.4rem;
-            }
-            .projects-grid {
-                gap: 0.8rem;
-            }
-            .project-card {
-                padding: 0.8rem 0.8rem;
-            }
-            #contact form {
-                padding: 1rem 0.8rem;
-                gap: 0.6rem;
-            }
-            #contact input,
-            #contact textarea {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.75rem;
-            }
-            #contact textarea {
-                min-height: 60px;
-            }
-            #contact .btn {
-                padding: 0.3rem 1.2rem;
-                font-size: 0.75rem;
-            }
+            #hero { padding-top: 0.25rem; }
+            .data-headline { font-size: clamp(1rem, 4vh, 1.8rem); }
+            .glyph-bar { height: clamp(1rem, 4vh, 1.8rem); }
+            .glyph-pie { width: clamp(0.9rem, 3.5vh, 1.6rem); height: clamp(0.9rem, 3.5vh, 1.6rem); }
+            .glyph-trend { width: clamp(1rem, 4vh, 1.8rem); height: clamp(0.9rem, 3.5vh, 1.6rem); }
+            .hero-text p { font-size: clamp(0.6rem, 1.8vh, 0.9rem); margin: 0.1rem 0 0.3rem; }
+            #macbook-container { height: clamp(160px, 45vh, 300px); max-height: 60vh; }
+            .section-block { padding: 2rem 0.8rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .section-block { transition: none; opacity: 1; transform: none; }
+            .hero-text p { animation: none; }
+            .project-card, .project-thumb img { transition: none; }
         }
 
         /* Print */
         @media print {
-            #macbook-container {
-                height: 300px !important;
-            }
-            .section-block {
-                opacity: 1 !important;
-                transform: none !important;
-                padding: 2rem 0 !important;
-                break-inside: avoid;
-            }
-            body {
-                background: #fff;
-                color: #111;
-            }
-            .section-block h2 {
-                -webkit-text-fill-color: #f5576c;
-                color: #f5576c;
-            }
-            #about p {
-                color: #333;
-            }
-            .project-card {
-                background: #f5f5f5;
-                border-color: #ddd;
-            }
-            .project-card p {
-                color: #444;
-            }
-            .skill-item {
-                background: #f5f5f5;
-                border-color: #ddd;
-            }
-            .skill-item i {
-                color: #f5576c;
-            }
-            #contact form {
-                background: #f5f5f5;
-                border-color: #ddd;
-            }
-            #contact input,
-            #contact textarea {
-                background: #fff;
-                color: #111;
-                border-color: #ccc;
-            }
-            footer {
-                border-top-color: #ddd;
-                color: #888;
-            }
-            .hero-text .btn,
-            #contact .btn {
-                background: #f5576c !important;
-                color: #fff !important;
-            }
-            #loading-macbook {
-                display: none !important;
-            }
-            .hero-text h1::before {
-                display: none !important;
-            }
+            .topnav, .filters, .lightbox { display: none !important; }
+            #macbook-container { height: 300px !important; }
+            .section-block { opacity: 1 !important; transform: none !important; padding: 2rem 0 !important; break-inside: avoid; }
+            body { background: #fff; color: #111; }
+            .section-block h2 { -webkit-text-fill-color: #f5576c; color: #f5576c; }
+            #about p, .project-card p, .project-card li { color: #333; }
+            .project-card, .skill-item, #contact form { background: #f5f5f5; border-color: #ddd; }
+            .project-card h3 { color: #111; }
+            footer { border-top-color: #ddd; color: #888; }
+            .btn { background: #f5576c !important; color: #fff !important; }
+            #loading-macbook { display: none !important; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== NAV ===== -->
+    <nav class="topnav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
     <!-- ===== HERO ===== -->
     <section id="hero">
         <div class="hero-text">
-            <div class="data-headline">
+            <div class="data-headline" role="heading" aria-level="1" aria-label="Hello, I'm Raymond">
                 <span class="letter">H</span>
                 <span class="letter">e</span>
-                <span class="glyph-bar" aria-label="l">
+                <span class="glyph-bar" aria-hidden="true">
                     <span class="bar blue"></span>
                     <span class="bar green"></span>
                 </span>
-                <span class="glyph-pie" aria-label="a"></span>
+                <span class="glyph-pie" aria-hidden="true"></span>
                 <span class="letter">,</span>
                 <span class="letter">&nbsp;</span>
                 <span class="letter">I</span>
@@ -823,7 +605,7 @@
                 <span class="letter">R</span>
                 <span class="letter">a</span>
                 <span class="letter">y</span>
-                <span class="glyph-trend" aria-label="o">
+                <span class="glyph-trend" aria-hidden="true">
                     <svg viewBox="0 0 40 30" preserveAspectRatio="xMidYMid meet">
                         <polyline points="2,25 10,18 18,22 26,12 34,16 38,8" class="trend-line" />
                         <circle cx="2" cy="25" class="trend-dot" />
@@ -834,12 +616,15 @@
                         <circle cx="38" cy="8" class="trend-dot" />
                     </svg>
                 </span>
-                <span class="glyph-pie" aria-label="a"></span>
+                <span class="glyph-pie" aria-hidden="true"></span>
                 <span class="letter">n</span>
                 <span class="letter">d</span>
             </div>
             <p>Data Analyst · Turning data into stories</p>
-            <a href="#contact" class="btn">Let's talk</a>
+            <div class="hero-actions">
+                <a href="#projects" class="btn">View my work</a>
+                <a href="#contact" class="btn ghost">Let's talk</a>
+            </div>
         </div>
 
         <div id="macbook-container">
@@ -855,8 +640,12 @@
         <div class="container">
             <h2>About Me</h2>
             <p>
-                I'm a passionate Data Analyst with 5+ years of experience in extracting insights from complex datasets.
-                I love using Python, SQL, and visualization tools to help businesses make data-driven decisions.
+                I'm a Data Analyst with 5+ years of experience turning messy operational data into
+                dashboards, reports and tools that teams actually use every day.
+            </p>
+            <p>
+                Beyond analysis, I build the plumbing: automated report generators, data formatters and
+                internal portals that replace manual spreadsheet work and keep daily operations on track.
             </p>
         </div>
     </section>
@@ -868,9 +657,11 @@
             <div class="skills-grid">
                 <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
                 <div class="skill-item"><i class="fas fa-database"></i><span>SQL</span></div>
+                <div class="skill-item"><i class="fas fa-file-excel"></i><span>Excel</span></div>
                 <div class="skill-item"><i class="fas fa-chart-line"></i><span>Tableau</span></div>
                 <div class="skill-item"><i class="fas fa-chart-pie"></i><span>Power BI</span></div>
                 <div class="skill-item"><i class="fas fa-code"></i><span>Pandas</span></div>
+                <div class="skill-item"><i class="fas fa-gears"></i><span>Automation</span></div>
             </div>
         </div>
     </section>
@@ -879,23 +670,165 @@
     <section id="projects" class="section-block">
         <div class="container">
             <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Sales Dashboard</h3>
-                    <p>Interactive Tableau dashboard analyzing regional sales performance.</p>
-                    <div class="tech"><span>Tableau</span><span>SQL</span><span>Streamlit</span></div>
-                </div>
-                <div class="project-card">
-                    <h3>Customer Churn Prediction</h3>
-                    <p>ML model using Python to predict customer churn with 85% accuracy.</p>
-                    <div class="tech"><span>Python</span><span>Scikit‑learn</span><span>Pandas</span></div>
-                </div>
-                <div class="project-card">
-                    <h3>Real‑time Stock Analyzer</h3>
-                    <p>Web app that visualizes stock data with live updates.</p>
-                    <div class="tech"><span>Python</span><span>Dash</span><span>Plotly</span></div>
-                </div>
+            <p class="section-sub">
+                Dashboards, reporting systems and internal tools I've designed and built.
+                Click any screenshot to enlarge it.
+            </p>
+
+            <div class="filters" role="group" aria-label="Filter projects">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+                <button class="filter-btn" data-filter="tool">Internal tools</button>
+                <button class="filter-btn" data-filter="personal">Personal projects</button>
             </div>
+
+            <div class="projects-grid">
+
+                <!-- 1 · DA Portal -->
+                <article class="project-card" data-cat="tool">
+                    <button class="project-thumb" type="button" aria-label="Enlarge DA Portal screenshot">
+                        <img src="assets/projects/da-portal.png" alt="SPM PIF DA Portal reporting dashboard" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-table-columns"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Internal tool · Reporting</div>
+                        <h3>DA Portal — Report Automation</h3>
+                        <p>A web portal that generates recurring operational reports and tracks every run in one place.</p>
+                        <ul>
+                            <li>Generates Tele-Calling, CA Summary, Branch Productivity and other reports</li>
+                            <li>Tracks processing history, failures and user activity</li>
+                            <li>Role-based access with data upload and admin pages</li>
+                        </ul>
+                        <div class="tech"><span>Web app</span><span>Report automation</span><span>User roles</span></div>
+                    </div>
+                </article>
+
+                <!-- 2 · SPMC PIF hub -->
+                <article class="project-card" data-cat="tool">
+                    <button class="project-thumb" type="button" aria-label="Enlarge SPMC PIF tools hub screenshot">
+                        <img src="assets/projects/spmc-pif-hub.png" alt="SPMC PIF internal tools hub" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-toolbox"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Internal tool · Automation</div>
+                        <h3>SPMC PIF — Data Utilities Hub</h3>
+                        <p>One launcher for the data-processing tools my team uses daily, with user approval and admin controls.</p>
+                        <ul>
+                            <li><strong>PIF Endo Formatify:</strong> unifies multi-file endorsements into ready-to-load outputs</li>
+                            <li><strong>Batch update request:</strong> fast field-activity entry with an append-only log</li>
+                            <li><strong>Payment Tagging:</strong> agent attribution with CSV/Excel upload and financial summary</li>
+                        </ul>
+                        <div class="tech"><span>Automation</span><span>CSV / Excel</span><span>Admin &amp; approvals</span></div>
+                    </div>
+                </article>
+
+                <!-- 3 · Collection Pipeline -->
+                <article class="project-card" data-cat="dashboard">
+                    <button class="project-thumb" type="button" aria-label="Enlarge Collection Pipeline screenshot">
+                        <img src="assets/projects/collection-pipeline.png" alt="PIF Regular Collection Pipeline dashboard" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-chart-column"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Dashboard · Collections</div>
+                        <h3>Collection Pipeline</h3>
+                        <p>A live funnel view from endorsement to payment, with period-over-period comparison.</p>
+                        <ul>
+                            <li>KPI cards for the full funnel: worked, contacted, promises, kept, broken</li>
+                            <li>Filters by campaign, client, sector and endorsed date</li>
+                            <li>Per-placement breakdown table with CSV export</li>
+                        </ul>
+                        <div class="tech"><span>KPI funnel</span><span>Live data</span><span>CSV export</span></div>
+                    </div>
+                </article>
+
+                <!-- 4 · Performance Ratings -->
+                <article class="project-card" data-cat="dashboard">
+                    <button class="project-thumb" type="button" aria-label="Enlarge Performance Ratings screenshot">
+                        <img src="assets/projects/performance-ratings.png" alt="PIF Performance Ratings audit dashboard" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-ranking-star"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Dashboard · Performance</div>
+                        <h3>Performance Ratings Ledger</h3>
+                        <p>A consolidated scorecard that rates each batch and branch against production standards.</p>
+                        <ul>
+                            <li>Scores accomplishment, portfolio mix and collection into a single rating</li>
+                            <li>Switch between batch and branch views, table or cards</li>
+                            <li>One-click export to PDF, CSV, image or print; light and dark themes</li>
+                        </ul>
+                        <div class="tech"><span>Scorecard logic</span><span>PDF export</span><span>Theming</span></div>
+                    </div>
+                </article>
+
+                <!-- 5 · Inventory Status -->
+                <article class="project-card" data-cat="dashboard">
+                    <button class="project-thumb" type="button" aria-label="Enlarge Inventory Status Dashboard screenshot">
+                        <img src="assets/projects/inventory-status.png" alt="Inventory Status Dashboard" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-boxes-stacked"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Dashboard · Data management</div>
+                        <h3>Inventory Status Dashboard</h3>
+                        <p>Handles large Excel uploads and makes tens of thousands of records searchable and filterable.</p>
+                        <ul>
+                            <li>Upload .xlsx/.xls files and match them against a shared lookup</li>
+                            <li>Per-branch and per-collector breakdowns with date filters</li>
+                            <li>Paginated, sortable table with CSV export</li>
+                        </ul>
+                        <div class="tech"><span>Excel ingest</span><span>Lookup matching</span><span>Pagination</span></div>
+                    </div>
+                </article>
+
+                <!-- 6 · TaskFlow -->
+                <article class="project-card" data-cat="personal">
+                    <button class="project-thumb" type="button" aria-label="Enlarge TaskFlow screenshot">
+                        <img src="assets/projects/taskflow.png" alt="TaskFlow task manager dashboard" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-list-check"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Personal project · Productivity</div>
+                        <h3>TaskFlow</h3>
+                        <p>A task manager built around recurring reporting work, with deadline and risk awareness.</p>
+                        <ul>
+                            <li>Quick-add syntax, due-time countdowns and overdue highlighting</li>
+                            <li>Daily progress ring, completion stats and risk flags</li>
+                            <li>Search, filters, keyboard shortcuts, light/dark mode, backup and CSV import/export</li>
+                        </ul>
+                        <div class="tech"><span>Productivity</span><span>Keyboard-first</span><span>Import / export</span></div>
+                    </div>
+                </article>
+
+                <!-- 7 · SignCheck -->
+                <article class="project-card" data-cat="personal">
+                    <button class="project-thumb" type="button" aria-label="Enlarge SignCheck screenshot">
+                        <img src="assets/projects/signcheck.png" alt="SignCheck document review tool" loading="lazy" />
+                        <span class="fallback"><i class="fas fa-shield-halved"></i></span>
+                        <span class="zoom-hint"><i class="fas fa-magnifying-glass-plus"></i> Enlarge</span>
+                    </button>
+                    <div class="project-body">
+                        <div class="kicker">Personal project · Document analysis</div>
+                        <h3>SignCheck — Review, then sign</h3>
+                        <p>A privacy-first tool that reads a document and explains what you're about to sign, entirely on your device.</p>
+                        <ul>
+                            <li>Accepts PDF, text, Markdown or images</li>
+                            <li>Plain-language summary, key terms and flagged findings</li>
+                            <li>Suggested questions to ask before signing; exportable report</li>
+                        </ul>
+                        <div class="tech"><span>Local processing</span><span>Text extraction</span><span>Heuristic review</span></div>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="privacy-note">
+                Screenshots are from internal tools and have been anonymized; names, account numbers and figures are redacted or sample data.
+            </p>
         </div>
     </section>
 
@@ -903,12 +836,13 @@
     <section id="contact" class="section-block">
         <div class="container">
             <h2>Get In Touch</h2>
+            <p class="section-sub">Have a data problem, a dashboard idea or a role to fill? Send me a note.</p>
             <form id="contact-form">
                 <input type="text" id="user_name" placeholder="Your Name" required />
                 <input type="email" id="user_email" placeholder="Your Email" required />
                 <textarea id="message" placeholder="Your Message" required></textarea>
                 <button type="submit" class="btn">Send Message</button>
-                <div class="status" id="form-status"></div>
+                <div class="status" id="form-status" role="status" aria-live="polite"></div>
             </form>
         </div>
     </section>
@@ -919,7 +853,13 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS (unchanged) ===== -->
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+        <button class="close" type="button" aria-label="Close">&times;</button>
+        <img id="lightbox-img" alt="" />
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">
     </script>
     <script type="importmap">
@@ -1589,19 +1529,67 @@
                 }, 1);
         }
 
+        // ================================================================
+        // PAGE BEHAVIOUR
+        // ================================================================
+
+        // Reveal sections on scroll
         document.querySelectorAll('.section-block').forEach(el => {
             new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting) el.classList.add('visible');
             }, { threshold: 0.12 }).observe(el);
         });
 
+        // Project filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                cards.forEach(c => c.classList.toggle('hidden', f !== 'all' && c.dataset.cat !== f));
+            });
+        });
+
+        // Screenshot fallback: show an icon tile if an image file is missing
+        document.querySelectorAll('.project-thumb img').forEach(img => {
+            const markMissing = () => img.closest('.project-thumb').classList.add('no-img');
+            img.addEventListener('error', markMissing);
+            if (img.complete && img.naturalWidth === 0) markMissing();
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.project-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const img = thumb.querySelector('img');
+                if (thumb.classList.contains('no-img') || !img) return;
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('open');
+            });
+        });
+        const closeLightbox = () => lightbox.classList.remove('open');
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+        // Contact form — opens the visitor's email app with the message pre-filled.
+        // TODO: replace with your real email address.
+        const CONTACT_EMAIL = 'you@example.com';
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            const name = document.getElementById('user_name').value.trim();
+            const email = document.getElementById('user_email').value.trim();
+            const msg = document.getElementById('message').value.trim();
+            const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+            const body = encodeURIComponent(`${msg}\n\n— ${name} (${email})`);
+            window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
             const status = document.getElementById('form-status');
-            status.textContent = '✓ Message sent! (demo)';
-            status.style.color = '#81c784';
+            status.textContent = '✓ Opening your email app…';
             this.reset();
-            setTimeout(() => { status.textContent = ''; }, 3000);
+            setTimeout(() => { status.textContent = ''; }, 4000);
         });
     </script>
 
